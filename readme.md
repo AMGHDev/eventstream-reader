@@ -5,6 +5,7 @@ Open the CosmosChFd.sln and restore Nuget packages
 **This sample uses the local Cosmos emulator, see FeedService.cs**
 
 *Database Name: Sample _(can be overriden in FeedService.cs ctor)_
+
 *Collection Names: _Monitored, _Leases _(can be overriden in FeedService.cs ctor)_
 	
 ## Repro instructions
