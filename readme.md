@@ -5,7 +5,7 @@ Open the ChangeFeedConsole and restore Nuget packages--Uses the local Cosmos emu
 *Collection Names: _Monitored, _Leases
 	
 ## Repro instructions
-**Notice on start up the normal info logging provides all the starting detail**
+**Notice on start up we have the usual starting detail**
 ```
 Starting processor...
 The store is initialized
@@ -18,6 +18,7 @@ Partition 0: renewer task started.
 ```
 **Add a couple of documents with an id that does NOT contain the word "error" and notice these process normally**
 *(you might get a lease update conflict, but it appears to resolve itself every time)*
+
 **Now add a document with an id that contains "error" and notice the exception is thrown, processor and partition load balancer stop, but..**
 ```
 SampleObserver::ProcessChangesAsync: partition 0, 1 docs
