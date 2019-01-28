@@ -19,7 +19,7 @@ namespace ChangeFeedConsole
 
         public FeedService(bool throwOnErrorId = false)
         {
-            Listener = new SampleListener(new Uri(CosmosUri), CosmosKey);
+            Listener = new SampleListener(new Uri(CosmosUri), CosmosKey, "Sample", "_Monitored", "_Leases");
             ThrowOnErrorId = throwOnErrorId;
         }
 
@@ -42,21 +42,22 @@ namespace ChangeFeedConsole
 
         private void OnNext(IEnumerable<string> ids)
         {
+            Log.Information("OnNext");
             foreach (var id in ids)
             {
                 if (id.IndexOf("error", StringComparison.CurrentCultureIgnoreCase) > -1 && ThrowOnErrorId)
-                    throw new Exception($"Boom on {id}!");
+                    throw new Exception($"OnNext: Boom on {id}!");
                 else
-                    Log.Information($"Received doc {id}");
+                    Log.Information($"OnNext: Hello doc {id}");
             }
         }
         private void OnCompleted()
         {
-            Log.Information("Completed");
+            Log.Information("OnCompleted");
         }
         private void OnError(Exception ex)
         {
-            Log.Error(ex, "I blew up!");
+            Log.Error(ex, "OnError: I blew up!");
         }
     }
 }

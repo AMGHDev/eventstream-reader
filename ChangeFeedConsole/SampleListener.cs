@@ -44,6 +44,7 @@ namespace ChangeFeedConsole
                                         .WithLeaseCollection(new DocumentCollectionInfo { Uri = CosmosUri, MasterKey = CosmosKey, DatabaseName = DatabaseName, CollectionName = LeaseCollection })
                                         .WithHostName("SampleHost")
                                         .WithObserverFactory(factory)
+                                        /* the explicit checkpoint is important because otherwise when the stream blows, it still checkpoints, and we 'lose' the message */
                                         .WithProcessorOptions(new ChangeFeedProcessorOptions { MaxItemCount = 2, CheckpointFrequency = new CheckpointFrequency { ExplicitCheckpoint = true } })
                                         .BuildAsync().Result;
 
