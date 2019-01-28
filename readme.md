@@ -22,13 +22,15 @@ Partition 0: renewer task started.
 **Now add a document with an id that contains "error" and notice the exception is thrown, processor and partition load balancer stop, but..**
 ```
 SampleObserver::ProcessChangesAsync: partition 0, 1 docs
-SampleProcessor: About to OnNext [[ exception occurs here ]]
+SampleProcessor: About to OnNext 
+[[ exception occurs here ]]
 Stopping processor...
 Partition load balancer task stopped.
 Partition 0: renewed lease with result True
 Partition 0: renewed lease with result True
-Partition 0: renewed lease with result True.......... etc.
+Partition 0: renewed lease with result True
+.......... etc.
 ```
-*The problem is the lease appears to be in a strange "zombie" state where it thinks it still has it, everything is fine, but it won't receive any more documents. You can add another doc and it will do nothing.*
+*The problem is the lease now appears to be in a strange "zombie" state where it thinks all is well, but it won't receive any more documents. You can add another doc and it will do nothing except continue to output the "renewed lease" message.*
 	
 	
