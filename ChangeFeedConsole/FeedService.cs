@@ -57,7 +57,7 @@ namespace ChangeFeedConsole
         }
         private void OnError(Exception ex)
         {
-            Log.Error(ex, "OnError: I blew up!");
+            Log.Error(ex, $"OnError: I blew up with message {ex.Message}");
         }
     }
 }

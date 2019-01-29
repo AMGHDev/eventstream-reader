@@ -12,8 +12,7 @@ namespace ChangeFeedConsole
         static void Main(string[] args)
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            Log.Logger = new LoggerConfiguration()
-                                    //.WriteTo.Seq("http://localhost:5341/")
+            Log.Logger = new LoggerConfiguration()                                    
                                     .WriteTo.Console()
                                     .CreateLogger();
 
