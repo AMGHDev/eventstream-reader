@@ -55,8 +55,9 @@ namespace ChangeFeedConsole
 
                 return Disposable.Create(() =>
                 {
-                    Subscriptions.Remove(sub);
                     processor.StopAsync().Wait();
+                    Subscriptions.Remove(sub);
+                    Log.Warning("Disposable run for subscription");
                 });
             });
 

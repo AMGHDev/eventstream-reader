@@ -10,10 +10,13 @@
   <ItemGroup>
     <PackageReference Include="LanguageExt.Core" Version="2.1.28" />
     <PackageReference Include="Microsoft.Azure.DocumentDB" Version="2.2.1" />
-    <PackageReference Include="Microsoft.Azure.DocumentDB.ChangeFeedProcessor" Version="2.2.5" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="System.Reactive.Linq" Version="4.1.2" />
     <PackageReference Include="Topshelf" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\azure-documentdb-changefeedprocessor-dotnet\src\DocumentDB.ChangeFeedProcessor\DocumentDB.ChangeFeedProcessor.csproj" />
   </ItemGroup>
 
 </Project>

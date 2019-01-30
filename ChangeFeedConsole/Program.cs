@@ -19,9 +19,10 @@ namespace ChangeFeedConsole
             Log.Information("***Program::Main STARTING***");
             HostFactory.Run(config =>
             {
-                config.Service<FeedService>(s =>
+                config.Service<FeedServiceDirect>(s =>
                 {
-                    s.ConstructUsing(() => new FeedService(ThrowOnErrorId));
+                    //s.ConstructUsing(() => new FeedServiceIntegrated(ThrowOnErrorId));
+                    s.ConstructUsing(() => new FeedServiceDirect(ThrowOnErrorId));
 
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
