@@ -55,7 +55,7 @@ namespace ChangeFeedConsole
 
                 return Disposable.Create(() =>
                 {
-                    processor.StopAsync().Wait(); //.ConfigureAwait(false).AsTask().Wait();
+                    processor.StopAsync().ConfigureAwait(false).AsTask().Wait();
                     Subscriptions.Remove(sub);
                     Log.Warning("Disposable run for subscription");
                 });
