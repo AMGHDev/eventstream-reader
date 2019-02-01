@@ -2,11 +2,11 @@
 
 Open the CosmosChFd.sln and restore Nuget packages
 
-**This sample uses the local Cosmos emulator, see FeedService.cs**
+**This sample uses the local Cosmos emulator, see FeedServiceIntegrated.cs**
 
-*Database Name: Sample _(can be overriden in FeedService.cs ctor)_
+*Database Name: Sample _(can be overriden in Program.cs ctor)_
 
-*Collection Names: _Monitored, _Leases _(can be overriden in FeedService.cs ctor)_
+*Collection Names: _Monitored, _Leases _(can be overriden in FeedServiceIntegrated.cs ctor)_
 	
 ## Repro instructions
 **Notice on start up we have the usual starting detail**
@@ -23,7 +23,7 @@ Partition 0: renewer task started.
 **Add a couple of documents with an id that does NOT contain the word "error" and notice these process normally**
 *(you might get a lease update conflict, but it appears to resolve itself every time)*
 
-**Now add a document with an id that contains "error" and notice the exception is thrown, processor and partition load balancer stop, but..**
+**Now add a document with an id that contains the text "error" and notice the exception is thrown, the partition load balancer stops, the processor says "stopping...", but never stops! (should see a "processing stopped")
 ```
 SampleObserver::ProcessChangesAsync: partition 0, 1 docs
 SampleProcessor: About to OnNext 
